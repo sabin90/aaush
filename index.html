@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #display-details {
+      text-align: center;
+      font-size: 36px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="display-details"></div>
+
+  <script>
+    window.onload = function() {
+      fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+          let details = `Your IP address is: ${data.ip}<br>`;
+          details += `City: ${data.city}<br>`;
+          details += `Region: ${data.region}<br>`;
+          details += `Country: ${data.country_name}<br>`;
+          details += `Postal code: ${data.postal}<br>`;
+          details += `Time zone: ${data.time_zone}<br>`;
+
+          document.getElementById('display-details').innerHTML = details;
+        });
+    };
+  </script>
+</body>
+</html>
